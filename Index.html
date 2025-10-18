@@ -1,76 +1,120 @@
-<!doctype html>
-<html lang="pt-PT">
+<!DOCTYPE html>
+<html lang="pt">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>PARDALECO - Portal</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🚀 Bem-vindo à PARDALECO</title>
   <style>
-    body {
+    * {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
       height: 100vh;
-      background: linear-gradient(135deg, #0077b6, #00b4d8, #90e0ef);
+      background: radial-gradient(circle at center, #0ff, #004);
+      color: #fff;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-direction: column;
-      color: white;
-      font-family: "Poppins", sans-serif;
+      font-family: "Segoe UI", sans-serif;
       overflow: hidden;
+      text-align: center;
     }
 
     h1 {
-      font-size: 3em;
-      margin: 0 0 20px 0;
-      text-align: center;
-      text-shadow: 2px 2px 10px rgba(0,0,0,0.4);
+      font-size: 3rem;
+      text-shadow: 0 0 20px #0ff;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+      animation: glow 2s infinite alternate;
     }
 
-    a.button {
+    h2 {
+      font-weight: 300;
+      color: #88f;
+      margin-bottom: 40px;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+      }
+      to {
+        text-shadow: 0 0 25px #0ff, 0 0 50px #0ff;
+      }
+    }
+
+    a {
       display: inline-block;
-      background: white;
-      color: #0077b6;
-      font-weight: 600;
-      padding: 15px 30px;
-      border-radius: 30px;
       text-decoration: none;
-      transition: 0.3s;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+      color: #0ff;
+      border: 1px solid #0ff;
+      padding: 10px 25px;
+      border-radius: 30px;
+      transition: 0.3s ease;
+      font-weight: 500;
+      text-transform: uppercase;
     }
 
-    a.button:hover {
-      background: #caf0f8;
-      transform: scale(1.05);
+    a:hover {
+      background: #0ff;
+      color: #000;
+      box-shadow: 0 0 15px #0ff;
     }
 
-    .bola {
+    .particles {
       position: absolute;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.15);
-      animation: flutuar 10s infinite ease-in-out;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -1;
     }
 
-    @keyframes flutuar {
-      0% { transform: translateY(0) scale(1); opacity: 0.7; }
-      50% { transform: translateY(-60px) scale(1.2); opacity: 1; }
-      100% { transform: translateY(0) scale(1); opacity: 0.7; }
+    .particle {
+      position: absolute;
+      background: rgba(0, 255, 255, 0.5);
+      border-radius: 50%;
+      animation: float 10s linear infinite;
+    }
+
+    @keyframes float {
+      from {
+        transform: translateY(100vh) scale(0);
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      to {
+        transform: translateY(-10vh) scale(1);
+        opacity: 0;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>Bem-vindo à Pardaleco</h1>
-  <a href="pt/Indexportugal.html" class="button">Entrar em PT 🇵🇹</a>
+  <div class="particles"></div>
 
-  <!-- Bolas flutuantes decorativas -->
-  <div class="bola" style="width:100px;height:100px;left:15%;top:20%;animation-delay:0s;"></div>
-  <div class="bola" style="width:150px;height:150px;left:70%;top:40%;animation-delay:2s;"></div>
-  <div class="bola" style="width:80px;height:80px;left:40%;bottom:10%;animation-delay:1s;"></div>
-  <div class="bola" style="width:120px;height:120px;right:10%;bottom:30%;animation-delay:3s;"></div>
-
+  <h1>👋 Bem-vindo à PARDALECO!</h1>
+  <h2>O futuro começa aqui...</h2>
+  <a href="pt/Indexportugal.html" class="button">Entrar na minha diretoria 🇵🇹</a>
   <script>
-    document.querySelectorAll('.bola').forEach(b => {
-      const dur = 8 + Math.random() * 6;
-      b.style.animationDuration = dur + 's';
-    });
+    // Gera partículas de luz animadas
+    const particlesContainer = document.querySelector(".particles");
+    for (let i = 0; i < 40; i++) {
+      const p = document.createElement("span");
+      p.classList.add("particle");
+      p.style.width = p.style.height = Math.random() * 8 + "px";
+      p.style.left = Math.random() * 100 + "vw";
+      p.style.animationDuration = 5 + Math.random() * 10 + "s";
+      p.style.animationDelay = Math.random() * 10 + "s";
+      particlesContainer.appendChild(p);
+    }
   </script>
 </body>
 </html>
