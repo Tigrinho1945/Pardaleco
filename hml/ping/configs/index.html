@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>PARDALECO</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #002b36, #005f73);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      font-family: "Poppins", sans-serif;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 2.3em;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+
+    .pasta {
+      width: 180px;
+      height: 140px;
+      background: #0a9396;
+      border-radius: 15px 15px 10px 10px;
+      position: relative;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .pasta::before {
+      content: "";
+      position: absolute;
+      top: -20px;
+      left: 0;
+      width: 70px;
+      height: 20px;
+      border-radius: 10px 10px 0 0;
+      background: #94d2bd;
+    }
+
+    .pasta:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    }
+
+    .nome {
+      position: absolute;
+      bottom: -35px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-weight: 600;
+      color: #ffffff;
+      text-align: center;
+      width: 100%;
+      font-size: 0.95rem;
+    }
+
+    .mensagem {
+      position: fixed;
+      bottom: 30px;
+      background: rgba(0,0,0,0.8);
+      padding: 10px 20px;
+      border-radius: 30px;
+      color: #fff;
+      font-size: 0.9rem;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .mensagem.visivel {
+      opacity: 1;
+    }
+
+    a.voltar {
+      position: absolute;
+      top: 25px;
+      left: 25px;
+      background: rgba(255,255,255,0.2);
+      color: #ffffff;
+      padding: 8px 16px;
+      border-radius: 20px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    a.voltar:hover {
+      background: rgba(255,255,255,0.35);
+    }
+  </style>
+</head>
+<body>
+  <!-- botão voltar para a página inicial -->
+  <a href="/PARDALECO/index.html" class="voltar">← Voltar</a>
+
+  <h1>PARDALECO</h1>
+
+  <div class="pasta" onclick="copiarLink()">
+    <div class="nome">PARDALECO - PINGIUM - ping1234</div>
+  </div>
+
+  <div class="mensagem" id="msg">📋 Link copiado!</div>
+
+  <script>
+    function copiarLink() {
+      const link = "https://tigrinho1945.github.io/Pardaleco/hml/ping/configs/config.enc2";
+      navigator.clipboard.writeText(link).then(() => {
+        const msg = document.getElementById("msg");
+        msg.classList.add("visivel");
+        setTimeout(() => msg.classList.remove("visivel"), 1800);
+      });
+    }
+  </script>
+</body>
+</html>
